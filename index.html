@@ -1,0 +1,160 @@
+import React from "react"; import { Mail, Download, Github, Linkedin, FileText } from "lucide-react"; import { motion } from "framer-motion";
+
+// Single-file React component portfolio for a 2nd-year Electrical & Electronics Engineering student // Uses Tailwind CSS for styling. Place this component in your React app (e.g. src/components/Portfolio.jsx) // Make sure Tailwind, framer-motion, and lucide-react are installed in your project.
+
+export default function Portfolio() { const projects = [ { title: "Bluetooth-Controlled Robot", desc: "Microcontroller-based robot using Bluetooth HC-05, L298N motor driver and Arduino UNO.", tags: ["Embedded C", "Arduino", "Motor Control"], link: "#", }, { title: "Power Electronics Lab — Buck Converter", desc: "Design and simulation of a buck converter using PWM and MOSFET switching (LTspice / Proteus).", tags: ["Power Electronics", "Simulation", "LTspice"], link: "#", }, { title: "Digital Logic Projects", desc: "Implemented 4-bit ALU and synchronous counter on FPGA using Verilog.", tags: ["Verilog", "FPGA", "Digital Design"], link: "#", }, ];
+
+const coursework = [ "Circuit Theory", "Signals & Systems", "Electromagnetics", "Analog Electronics", "Digital Electronics", "Power Systems (intro)", ];
+
+return ( <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-900"> <header className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between"> <div> <h1 className="text-2xl font-bold">Your Name</h1> <p className="text-sm text-slate-600">2nd Year | B.Tech Electrical & Electronics Engineering</p> </div> <div className="flex items-center gap-3"> <a href="#resume" className="inline-flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-100"> <Download size={16} /> Resume </a> <a href="#contact" className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 text-white hover:opacity-90"> <Mail size={16} /> Contact </a> </div> </header>
+
+<main className="max-w-5xl mx-auto px-6">
+    {/* Hero */}
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-10">
+      <motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
+        <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Hi — I'm <span className="text-indigo-600">Your Name</span></h2>
+        <p className="mt-4 text-slate-700">A curious 2nd year EEE student who loves embedded systems, power electronics and digital design. I build small robots, simulate converters, and write Verilog for FPGA projects.</p>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href="#projects" className="px-4 py-2 rounded-lg border border-indigo-600 text-indigo-600">See Projects</a>
+          <a href="#skills" className="px-4 py-2 rounded-lg bg-indigo-600 text-white">My Skills</a>
+        </div>
+
+        <div className="mt-8 flex gap-4">
+          <a href="#" aria-label="GitHub" className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900">
+            <Github size={18} /> GitHub
+          </a>
+          <a href="#" aria-label="LinkedIn" className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900">
+            <Linkedin size={18} /> LinkedIn
+          </a>
+        </div>
+      </motion.div>
+
+      <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.6 }} className="p-6 rounded-2xl bg-gradient-to-br from-white to-slate-50 shadow">
+        <div className="h-56 rounded-lg bg-[linear-gradient(135deg,#eef2ff_0%,#ffffff_40%)] border border-slate-100 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-slate-500 text-sm">Profile Photo</p>
+            <div className="w-28 h-28 rounded-full bg-indigo-100 mt-4 mx-auto flex items-center justify-center font-bold text-indigo-600">YN</div>
+          </div>
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-xs text-slate-500">Degree</p>
+            <p className="font-medium">B.Tech EEE</p>
+          </div>
+          <div>
+            <p className="text-xs text-slate-500">College</p>
+            <p className="font-medium">Your College</p>
+          </div>
+          <div>
+            <p className="text-xs text-slate-500">Location</p>
+            <p className="font-medium">City, State</p>
+          </div>
+          <div>
+            <p className="text-xs text-slate-500">Class</p>
+            <p className="font-medium">2nd Year</p>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+
+    {/* Skills & Coursework */}
+    <section id="skills" className="py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="col-span-2 p-6 rounded-2xl bg-white shadow">
+        <h3 className="text-xl font-semibold">Skills</h3>
+        <p className="text-sm text-slate-600 mt-2">Hands-on skills and tools I use</p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          {['C / Embedded C','Arduino','Verilog','LTspice','Proteus','MATLAB','Multisim','PCB Design'].map((s)=> (
+            <span key={s} className="px-3 py-1 rounded-full border text-sm">{s}</span>
+          ))}
+        </div>
+
+        <h4 className="mt-6 font-medium">Relevant Coursework</h4>
+        <ul className="mt-2 grid grid-cols-2 gap-2 text-sm text-slate-700">
+          {coursework.map((c)=>(<li key={c} className="before:content-['•'] before:mr-2">{c}</li>))}
+        </ul>
+      </div>
+
+      <aside className="p-6 rounded-2xl bg-white shadow">
+        <h4 className="text-lg font-semibold">Contact</h4>
+        <p className="text-sm text-slate-600 mt-2">Open to internships and lab assistant roles.</p>
+
+        <div className="mt-4 space-y-3">
+          <div className="text-sm">
+            <p className="text-xs text-slate-500">Email</p>
+            <a href="mailto:youremail@example.com" className="font-medium">youremail@example.com</a>
+          </div>
+          <div className="text-sm">
+            <p className="text-xs text-slate-500">Phone</p>
+            <p className="font-medium">+91 98765 43210</p>
+          </div>
+          <a href="#resume" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border mt-2"><FileText size={16}/> Download CV</a>
+        </div>
+      </aside>
+    </section>
+
+    {/* Projects */}
+    <section id="projects" className="py-10">
+      <h3 className="text-2xl font-semibold">Projects & Lab Work</h3>
+      <p className="text-sm text-slate-600 mt-2">Selected academic and hobby projects with short descriptions.</p>
+
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {projects.map((p) => (
+          <article key={p.title} className="p-5 rounded-2xl bg-white shadow hover:shadow-lg transition">
+            <h4 className="font-semibold">{p.title}</h4>
+            <p className="text-sm text-slate-600 mt-2">{p.desc}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {p.tags.map(t => <span key={t} className="px-2 py-1 text-xs border rounded">{t}</span>)}
+            </div>
+            <div className="mt-4">
+              <a href={p.link} className="text-indigo-600 text-sm">View details →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* Achievements / Extracurricular */}
+    <section className="py-10">
+      <h3 className="text-2xl font-semibold">Achievements & Activities</h3>
+      <ul className="mt-4 space-y-2 text-sm text-slate-700">
+        <li>Winner — Inter-college Robotics Competition (year)</li>
+        <li>Presented paper on "Energy Efficient Converters" at XYZ symposium (year)</li>
+        <li>Member — IEEE Student Branch</li>
+      </ul>
+    </section>
+
+    {/* Footer / Contact form */}
+    <section id="contact" className="py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="p-6 rounded-2xl bg-white shadow">
+          <h3 className="text-xl font-semibold">Get in touch</h3>
+          <p className="text-sm text-slate-600 mt-2">Available for internships, lab assistance and small freelance embedded projects.</p>
+
+          <form className="mt-4 space-y-3" onSubmit={(e)=>{e.preventDefault(); window.location = 'mailto:youremail@example.com';}}>
+            <input required className="w-full px-3 py-2 border rounded" placeholder="Your name" />
+            <input required className="w-full px-3 py-2 border rounded" placeholder="Your email" />
+            <textarea required className="w-full px-3 py-2 border rounded" placeholder="Message (short)"></textarea>
+            <button className="inline-flex items-center gap-2 px-4 py-2 rounded bg-indigo-600 text-white">Send message</button>
+          </form>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white shadow">
+          <h4 className="font-medium">Other Links</h4>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li><a href="#" className="text-indigo-600">GitHub Projects</a></li>
+            <li><a href="#" className="text-indigo-600">LinkedIn Profile</a></li>
+            <li><a href="#resume" className="text-indigo-600">Resume (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer className="py-8 text-center text-sm text-slate-500">© {new Date().getFullYear()} Your Name — 2nd Year EEE • Built with ❤️</footer>
+  </main>
+</div>
+
+); }
+
+  
